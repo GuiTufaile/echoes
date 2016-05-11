@@ -1,0 +1,61 @@
+{% extends "page.html" %}
+
+{% block page_content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="breadcrumb">
+                    <li><a href="{{ root }}">Home</a></li>
+					<li class="active">Perfil</li>
+                </ol>
+            </div> 
+        </div>
+        <div class="row">  
+            <div class="col-md-12"> {% include 'alerts.html' with {'subject': 'Perfil'} %} </div> 
+        </div>
+        <div class="row">
+            <div class="col-md-6"><h3>Editar Perfil</h3></div>
+            <div class="col-md-6"></div>                                        
+        </div>
+        <div class="row">        
+            <div class="col-md-12"><hr></div>
+        </div>
+        <div class="row">
+	        <div class="col-md-12">
+	           <form action="{{ root }}/configuracoes/perfil/acoes/editar.php" method="post" enctype="multipart/form-data" id="formperfil" autocomplete="false">	
+					<div class="row">
+					    <div class="col-md-6">
+					        <div class="form-group">
+					            <label for="nome">Nome <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="Nome de identificação"></i></label>
+					            <input type="text" class="form-control" disabled name="nome" id="nome" value="{{ data.usuario_nome }}">
+					        </div>
+					        <div class="form-group">
+					            <label for="senha">Nova Senha <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="Mantenha em branco para permanecer com a mesma senha"></i></label>
+					            <input type="password" class="form-control" name="senha" id="senha">
+					        </div>
+					    </div>
+					    <div class="col-md-6">
+							<div class="form-group">
+					            <label for="email">E-mail * <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="Utilizado para login no sistema"></i></label>
+					            <input type="email" class="form-control" name="email" id="email" value="{{ data.usuario_email }}">
+					        </div>
+					        {% if usertype != 'administrador' %}
+					        <div class="form-group">
+					            <label for="telefone">Telefone <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="Telefone de contato"></i></label>
+					            <input type="text" class="form-control" name="telefone" id="telefone" value="{{ data.responsavel_telefone }}" placeholder="(00) 0000-0000" minlength="14" maxlength="15">
+					        </div>
+					        {% endif %}
+					    </div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<input class="btn btn-info pull-right" type="submit" value="Salvar">
+						</div>
+					</div>
+				</form>	
+	        </div>
+	    </div>
+	</div>
+
+{% endblock %}

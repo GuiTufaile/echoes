@@ -1,0 +1,79 @@
+{% extends "page.html" %}
+
+{% block page_content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="breadcrumb">
+                    <li><a href="{{ root }}">Home</a></li>
+                    {% if usertype == 'administrador'%}
+                    <li><a href="{{ root }}/credenciados/">Credenciado ({{ data.credenciado }})</a></li>
+                    {% endif %}
+                    <li class="active">Responsáveis</li>
+                </ol>
+            </div> 
+        </div>
+        <div class="row">  
+            <div class="col-md-12"> {% include 'alerts.html' with {'subject': 'Responsável'} %} </div> 
+        </div>
+        <div class="row">   
+            <div class="col-md-12"><a href="{{ root }}/responsaveis/cadastro.php?id={{ data.id }}&cred={{ data.credenciado }}" class="btn btn-info pull-right"> <i class="fa fa-plus"></i> Novo </a></div>   
+        </div>
+        <div class="row">
+            <div class="col-md-6"><h3>LISTAGEM DE RESPONSÁVEIS</h3></div>
+            <div class="col-md-6">
+                <h3 class="pull-right">Responsáveis Cadastrados: {{ data.total }}</h3>
+            </div>                                         
+        </div>
+        <div class="row">        
+            <div class="col-md-12"><hr></div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+               <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th> Nome </th>
+                            <th> Email </th>
+                            <th> Telefone </th>
+                            <th> Ações </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for responsavel in data.responsaveis %}
+                        <tr>
+                            <td> {{ responsavel.responsavel_nome }} </td>
+                            <td> {{ responsavel.responsavel_email }} </td>
+                            <td> {{ responsavel.responsavel_telefone }} </td>
+                            <td>
+                                <a href="{{ root }}/responsaveis/editar.php?id={{ responsavel.responsavel_id }}" class="btn btn-xs btn-info"> <i class="fa fa-cog"></i> Gerenciar </a>
+                                <a href="{{ root }}/responsaveis/acoes/deletar.php?id={{ responsavel.responsavel_id }}" class="btn btn-xs btn-danger deletar"> <i class="fa fa-times"></i> Remover </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+{% block additional_scripts %}
+
+    <script>
+        $(document).ready(function(){
+            $(".deletar").on('click', function () {
+                r = confirm("Deseja realmente deletar este responsável?");
+                if(r == true){
+                    return true;
+                } else{
+                    return false;
+                }
+            });
+        });
+    </script>
+
+{% endblock %}

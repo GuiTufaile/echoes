@@ -1,0 +1,35 @@
+{% extends "page.html" %}
+
+{% block page_content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="breadcrumb">
+                    <li><a href="{{ root }}">Home</a></li>
+                    <li class="active">Dados Credênciado</li>
+                </ol>
+            </div> 
+        </div>
+        <div class="row">
+            <div class="col-md-6"><h3>EDITAR DADOS CREDÊNCIADO</h3></div>
+            <div class="col-md-6"></div>                                              
+        </div>
+        <div class="row">        
+            <div class="col-md-12"><hr></div>
+        </div>
+        <div class="row">
+	        <div class="col-md-12">
+	            <form action="{{ root }}/configuracoes/dados/acoes/editar.php" method="post" enctype="multipart/form-data" id="formresponsavel" autocomplete="false">
+                    {% include 'form_credenciados.html' %}
+                    <div class="row">
+                        <div class="col-md-12">                  
+                            <input class="btn btn-info pull-right" type="submit" value="Salvar">
+                        </div>
+                    </div>
+               </form>
+	        </div>
+	    </div>
+	</div>
+
+{% endblock %}

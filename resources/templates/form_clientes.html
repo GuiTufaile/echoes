@@ -1,0 +1,87 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="nomefantasia">Nome Fantasia *</label>
+            <input type="text" class="form-control" name="nomefantasia" id="nomefantasia" value="{{ data.cliente_nomefantasia }}">
+        </div>
+        <div class="form-group">
+            <label for="cnpj">CNPJ *</label>
+            <input type="text" class="form-control" name="cnpj" id="cnpj" value="{{ data.cliente_cnpj }}" placeholder="00.000.000/0000-00" maxlength="18" minlength="18">
+        </div>        
+    </div>
+    <div class="col-md-6">
+       <div class="form-group">
+            <label for="razaosocial">Razão Social *</label>
+            <input type="text" class="form-control" name="razaosocial" id="razaosocial" value="{{ data.cliente_razaosocial }}">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h4>Contato</h4><hr>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="telefone">Telefone * <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="Telefone de contato"></i></label>
+            <input type="text" class="form-control" name="telefone" id="telefone" value="{{ data.cliente_telefone }}" placeholder="(00) 0000-0000" minlength="14" maxlength="15">
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="email">E-mail * <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="E-mail de contato"></i></label>
+            <input type="email" class="form-control" name="email" id="email" value="{{ data.cliente_email }}">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h4>Endereço</h4><hr>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="endereco">Logradouro * <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="Rua, Avenida"></i></label>
+            <input type="text" class="form-control" name="endereco" id="endereco" value="{{ data.cliente_endereco }}">
+        </div>
+        <div class="form-group">
+            <label for="bairro">Bairro *</label>
+            <input type="text" class="form-control" name="bairro" id="bairro" value="{{ data.cliente_bairro }}">
+        </div>
+        <div class="form-group">
+            <label for="numero">Número *</label>
+            <input type="text" class="form-control numbers" name="numero" id="numero" value="{{ data.cliente_numero }}">
+        </div>
+        <div class="form-group">
+            <label for="complemento">Complemento <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="Exemplo: Apto 21, 2º Andar"></i></label>
+            <input type="text" class="form-control" name="complemento" id="complemento" value="{{ data.cliente_complemento }}">
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="pais">País *</label>
+            <select class="form-control" name="pais" id="pais">
+               {% include 'options_paises.html' %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="estado">Estado *</label>
+            <select class="form-control" name="estado" id="estado">
+                {% include 'options_estados.html' %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="cidade">Cidade *</label>
+            <select class="form-control" name="cidade" id="cidade">
+                {% include 'options_cidades.html' %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="cep">CEP *</label>
+            <input type="text" class="form-control numbers" name="cep" id="cep" value="{{ data.cliente_cep }}" placeholder="00000-000" maxlength="9" minlength="9">
+        </div>
+    </div>
+</div>
+

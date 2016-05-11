@@ -1,0 +1,50 @@
+{% if alert.type == 'cadastrar' and alert.value == 'sucesso' %}
+<div class="alert alert-success" role="alert">
+    {{ subject }} cadastrad{{ gender|default('o') }} com sucesso!
+</div>
+{% endif %}
+{% if alert.type == 'editar' and alert.value == 'sucesso' %}
+<div class="alert alert-success" role="alert">
+    {{ subject }} editad{{ gender|default('o') }} com sucesso!
+</div>
+{% endif %}
+{% if alert.type == 'deletar' and alert.value == 'sucesso' %}
+<div class="alert alert-success" role="alert">
+    {{ subject }} deletad{{ gender|default('o') }} com sucesso!
+</div>
+{% endif %}
+{% if alert.type == 'duvida' and alert.value == 'sucesso' %}
+<div class="alert alert-success" role="alert">
+    Sua dúvida foi enviada ao suporte com sucesso!
+</div>
+{% endif %}
+{% if alert.type == 'listar' and alert.value == 'sucesso' %}
+<div class="alert alert-success" role="alert">
+    {{ subject }} listad{{ gender|default('o') }} com sucesso!
+</div>
+{% endif %}
+{% if alert.type == 'cadastrar' and alert.value == 'erro' %}
+<div class="alert alert-danger" role="alert">
+    Erro ao cadastrar {{ subject }}, tente novamente
+</div>
+{% endif %}
+{% if alert.type == 'editar' and alert.value == 'erro' %}
+<div class="alert alert-danger" role="alert">
+    Erro ao editar {{ subject }}, tente novamente
+</div>
+{% endif %}
+{% if alert.type == 'deletar' and alert.value == 'erro' %}
+<div class="alert alert-danger" role="alert">
+    Erro ao deletar {{ subject }}, tente novamente
+</div>
+{% endif %}
+{% if alert.type == 'duvida' and alert.value == 'erro' %}
+<div class="alert alert-danger" role="alert">
+    Erro ao enviar sua dúvida, tente novamente
+</div>
+{% endif %}
+{% if alert.type == 'listar' and alert.value == 'erro' %}
+<div class="alert alert-danger" role="alert">
+    Erro ao listar {{ subject }}, tente novamente
+</div>
+{% endif %}

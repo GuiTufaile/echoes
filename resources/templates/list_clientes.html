@@ -1,0 +1,102 @@
+{% extends "page.html" %}
+
+{% block page_content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="breadcrumb">
+                    <li><a href="{{ root }}">Home</a></li>
+                    {% if usertype == 'administrador'%}
+                    <li><a href="{{ root }}/credenciados/">Credenciado ({{ data.credenciado }})</a></li>
+                    {% endif %}
+                    <li class="active">Clientes</li>
+                </ol>
+            </div> 
+        </div>
+        <div class="row">  
+            <div class="col-md-12"> {% include 'alerts.html' with {'subject': 'Cliente'} %} </div> 
+        </div>
+        {% if usertype == 'credenciado' or usertype == 'representate' %}       
+        <div class="row">   
+            <div class="col-md-12"><a href="cadastro.php" class="btn btn-info pull-right"> <i class="fa fa-plus"></i> Novo </a></div>   
+        </div>
+        {% endif %}
+        <div class="row">
+            <div class="col-md-6"><h3>LISTAGEM DE CLIENTES</h3></div>
+            <div class="col-md-6">
+                <h3 class="pull-right">Clientes Cadastrados: {{ data.total }}</h3>
+            </div>                                              
+        </div>
+        <div class="row">        
+            <div class="col-md-12"><hr></div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+               <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th> Nome Fantasia </th>
+                            <th> Razão Social </th>
+                            <th> CPNJ </th>
+                            <th> Telefone </th>
+                            <th> E-mail </th>
+                            <th> Cidade </th>
+                            <th> Estado </th>
+                            <th> Ações </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for cliente in data.clientes %}
+                        <tr>
+                            <td>{{ cliente.cliente_nomefantasia }}</td>
+                            <td>{{ cliente.cliente_razaosocial }}</td>
+                            <td>{{ cliente.cliente_cnpj }}</td>
+                            <td>{{ cliente.cliente_telefone }}</td>
+                            <td>{{ cliente.cliente_email }}</td>
+                            <td>{{ cliente.cidade_nome }}</td>
+                            <td>{{ cliente.estado_nome }}</td>
+                            <td>
+                                <div class="btn-group">
+                                    <a href="{{ root }}/clientes/editar.php?id={{ cliente.cliente_id }}" class="btn btn-xs btn-info"> <i class="fa fa-cog"></i> Gerenciar </a>
+                                    <button type="button" class="btn btn-xs btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ root }}/orcamentos/index.php?id={{ cliente.cliente_id }}&cliente"> Orçamentos </a></li>
+                                        {% if cliente.certQuantidade > 0 %}
+                                        <li><a href="{{ root }}/certificados/index.php?id={{ cliente.cliente_id }}"> Certificados </a></li>
+                                        {% endif %}
+                                    </ul>
+                                </div>                                
+                                {% if usertype == 'credenciado' or usertype == 'representate' %}                                     
+                                <a href="{{ root }}/clientes/acoes/deletar.php?id={{ cliente.cliente_id }}" class="btn btn-xs btn-danger deletar"> <i class="fa fa-times"></i> Remover </a>
+                                {% endif %}
+                            </td>   
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block additional_scripts %}
+
+    <script>
+        $(document).ready(function(){
+            $(".deletar").on('click', function () {
+                r = confirm("Deseja realmente deletar este cliente?");
+                if(r == true){
+                    return true;
+                } else{
+                    return false;
+                }
+            });
+        });
+    </script>
+
+{% endblock %}
+

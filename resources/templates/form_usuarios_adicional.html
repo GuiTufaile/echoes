@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-md-12">
+        <h4>Informações Adicionais</h4><hr>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="credenciado">Credênciado * <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="Credênciado a ser vinculado"></i></label>
+            <select class="form-control" name="credenciado" id="privilegio">
+               <option value=""></option>
+                {% for credenciado in data.credenciados %}
+                   <option value="{{ credenciado.credenciado_id }}" {% if credenciado.credenciado_id == data.credenciado_id %}selected="selected"{% endif %}>{{ credenciado.credenciado_nomefantasia }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="telefone">Telefone <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="Telefone de contato do usuário"></i></label>
+            <input type="text" class="form-control" name="telefone" id="telefone" value="{{ data.responsavel_telefone }}" placeholder="(00) 0000-0000" minlength="14" maxlength="15">
+        </div>
+    </div>
+</div>

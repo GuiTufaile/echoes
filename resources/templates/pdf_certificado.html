@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <title>
+            Certificado - Host
+        </title>
+        <style type='text/css'>
+            html, body{
+                margin:0px;
+                padding:0px;
+                font-family: "Segoe UI",Frutiger,"Frutiger Linotype",Arial,sans-serif;
+                color:#939498;
+            }
+            .container{
+                position: absolute;
+                /*height:794px !important;
+                width:1123px !important;*/
+                height: 100% !important;
+                width: 100% !important;
+                background-image:url('{{ resources }}/img/certificado.jpg');
+                background-repeat:no-repeat;
+                background-size:100%;
+                background-position:center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class='container'>
+            <div style='position:relative; top:216px; left:640px; display:block;'>
+                {{ data.dataServico }}
+            </div>
+            <table style='position:relative; top:270px; left:185px; font-size:12px; width:385px;' cellpadding='0' cellspacing='0'>
+                <tbody>
+                    <tr style='font-weight:bold;'>
+                        <td>
+                            {{ data.Ccnpj }} | {{ data.Crazaosocial }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{ data.Cendereco }}, {{ data.Cbairro }}, {{ data.Cnumero }} - {{ data.Ccidade }} - {{ data.Cestado }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Validade: Áreas de maior tráfego {{ data.validade }} dias
+                            <br/>
+                            e demais ambientes {{ data.validade3 }} dias.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <br/>
+                            <br/>
+                            Parecer técnico: Validade definida face ao alto fluxo
+                            <br/>
+                            de pessoas nestes determinados ambientes, onde
+                            <br/>
+                            constatamos que para os pontos crítivos, que são
+                            <br/>
+                            os corredores, recomenda-se a intervenção mensal
+                            <br/>
+                            para que o ambiente seja considerado saudável.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style='position:absolute; top:300px; left:950px;'>
+                <img src='{{ resources }}/img/logo/{{ data.credenciado_id }}/{{ data.logo }}' height='50'/>
+            </div>
+            <table style='position:absolute; top:294px; left:555px; font-size:11px; text-align:right; width:385px;' cellpadding='0' cellspacing='0'>
+                <tbody>
+                    <tr style='font-weight:bold;'>
+                        <td>
+                            {{ data.nomefantasia }} | {{ data.razaosocial }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            CNPJ: {{ data.cnpj }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{ data.endereco }}, {{ data.bairro }}, {{ data.numero }} - {{ data.cidade }} - {{ data.estado }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Telefone: {{ data.telefone }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            E-mail: {{ data.email }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <br/>
+                            <br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Certificado Número #{{ data.orcamento }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <img src='{{ resources }}/img/ass.png' style='position:absolute; top:495px; left:300px; width:200px;' />
+            <div style='position:absolute; top:580px; left:607px; width:235px; font-size:12px; text-align:center;'>
+                {{ data.responsavel }} - {{ data.nomefantasia }}
+            </div>
+        </div>
+    </body>
+</html>

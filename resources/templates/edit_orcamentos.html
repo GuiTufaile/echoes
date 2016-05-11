@@ -1,0 +1,100 @@
+{% extends "page.html" %}
+
+{% block page_content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="breadcrumb">
+                    <li><a href="{{ root }}/index.php">Home</a></li>
+                    <li><a href="{{ root }}/orcamentos/">Orçamentos</a></li>
+                    <li class="active">Editar</li>
+                </ol>
+            </div> 
+        </div>
+        <div class="row">
+            <div class="col-md-6"><h3>EDIÇÃO ORÇAMENTO</h3></div>
+            <div class="col-md-6"></div>                                              
+        </div>
+        <div class="row">        
+            <div class="col-md-12"><hr></div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form action="{{ root }}/orcamentos/acoes/cadastrar.php" method="post" enctype="multipart/form-data" id="formorcamento" autocomplete="false">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="cliente">Selecione o cliente</label>
+                            <select class="form-control" name="cliente" id="cliente">
+                                <option value="0"></option>
+                                {% for cliente in data.clientes %}
+                                <option value="{{ cliente.id }}" {% if data.cliente_id == cliente.id %}selected="selected"{% endif %}>{{ cliente.razaosocial }} - {{ cliente.nomefantasia }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <pre style="text-align:left; padding-left:-50%;" class="dados">
+                            <b>Cliente:</b> <span class="nomefantasia"></span> <br>
+                            <b>Razão Social:</b> <span class="razaosocial"></span> <br>
+                            <b>CNPJ:</b> <span class="cnpj"></span> <br>
+                            <b>Endereço:</b> <span class="endereco"></span> <br>
+                            <b>Telefone:</b> <span class="telefone"></span> <br>
+                            <b>Vendedor:</b> <span class="vendedor"></span> <br>
+                            <b>Responsável (Cliente):</b> <span class="responsavel"></span>
+                        </pre>
+                        <div class="form-group">
+                            <label for="area">Área (m²)</label>
+                            <input type="text" class="form-control numbers" name="area" id="area" value="{{ data.area }}" placeholder="Ex: 1000 (Utilize apenas números) *">
+                        </div>
+                        <div class="form-group">
+                            <label for="estado">Estado do Carpete</label>
+                            <select class="form-control" name="estado" id="estado">
+                              <option value="1" {% if data.estado == '1' %}selected="selected"{% endif %}>Muito Sujo</option>
+                              <option value="2" {% if data.estado == '2' %}selected="selected"{% endif %}>Sujo</option>
+                              <option value="3" {% if data.estado == '3' %}selected="selected"{% endif %}>Mediano</option>
+                            </select>
+                        </div>                      
+                        <div class="form-group">
+                            <label for="desconto">Desconto</label>
+                            <input type="text" class="form-control numbers" name="desconto" id="desconto" value="{{ data.desconto }}" placeholder="Valor do desconto (Utilize apenas números)">
+                        </div>
+                        <div class="form-group">
+                            <label for="tipoDesconto">Tipo de Desconto</label>
+                            <select class="form-control" name="tipoDesconto" id="tipoDesconto">
+                              <option value="p" {% if data.tipoDesconto == 'p' %}selected="selected"{% endif %}>Porcentagem %</option>
+                              <option value="v" {% if data.tipoDesconto == 'v' %}selected="selected"{% endif %}>Valor R$</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="valor">Valor (m²)</label>
+                            <input type="text" class="form-control" name="valor" id="valor" value="{{ data.valor }}" placeholder="R$ 00,00 (Utilize apenas números) *">
+                        </div>
+                        <div class="form-group">
+                            <label for="formaPagamento">Pagamento</label>
+                            <select name="pagamento" class="form-control">
+                                <option value="1" {% if data.pagamento == '1' %}selected="selected"{% endif %}>À Vista</option>
+                                <option value="2" {% if data.pagamento == '2' %}selected="selected"{% endif %}>A Prazo</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="formaPagamento">Forma de Pagamento</label>
+                            <input type="text" class="form-control" name="formaPagamento" id="formaPagamento" value="{{ data.formaPagamento }}" placeholder="Ex: 30/60 dias (Boleto)">
+                        </div>
+                        <div class="form-group">
+                            <label for="observacoes">Observações</label>
+                            <textarea name="observacoes" id="observacoes" class="form-control" value="{{ data.observacoes }}" placeholder="Esta observação estará presente no corpo do orçamento" rows="4"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="alert alert-success" id="total">
+                          <strong>Total:</strong> R$ 000,00
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <input class="btn btn-info pull-right" type="submit" value="Salvar">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

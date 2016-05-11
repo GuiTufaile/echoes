@@ -1,0 +1,41 @@
+{% extends "page.html" %}
+
+{% block before_head_close %}{% endblock %}
+
+{% block page_content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="breadcrumb">
+                    <li><a href="{{ root }}">Home</a></li>
+                    <li><a href="#"><!-- Level --></a></li>
+                    <li class="active"><!-- Level --></li>
+                </ol>
+            </div> 
+        </div>
+        <div class="row">  
+            <div class="col-md-12">  {% include 'alerts.html' with {'subject': '<!-- Nome pagina -- >'} %} </div> 
+        </div>
+        <div class="row">   
+            <div class="col-md-12"><a href="#" class="btn btn-info pull-right"> <i class="fa fa-plus"></i> Novo </a></div>   
+        </div>
+        <div class="row">
+            <div class="col-md-6"><h3><!-- Titulo Pagina --></h3></div>
+            <div class="col-md-6">
+                <h3 class="pull-right"><!-- Nome Pagina --> Cadastrados: {{ data.total }}</h3>
+            </div>                                              
+        </div>
+        <div class="row">        
+            <div class="col-md-12"><hr></div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+               <!--  Conteudo -->
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block additional_scripts %}{% endblock %}

@@ -1,0 +1,98 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="nomefantasia">Nome Fantasia * <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="Utilizado nos orçamentos e certificados "></i></label>
+            <input type="text" class="form-control" name="nomefantasia" id="nomefantasia" value="{{ data.credenciado_nomefantasia }}">
+        </div>
+        <div class="form-group">
+            <label for="cnpj">CNPJ *</label>
+            <input type="text" class="form-control" name="cnpj" id="cnpj" value="{{ data.credenciado_cnpj }}" placeholder="00.000.000/0000-00" maxlength="18" minlength="18">
+        </div>        
+        <div class="form-group">
+            <label for="razaosocial">Razão Social * <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="Utilizado nos orçamentos e certificados"></i></label>
+            <input type="text" class="form-control" name="razaosocial" id="razaosocial" value="{{ data.credenciado_razaosocial }}">
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="slogan">Slogan <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="Será subtítulo dos orçamentos"></i></label>
+            <input type="text" class="form-control" name="slogan" id="slogan" value="{{ data.credenciado_slogan }}">
+        </div>
+        <div class="form-group">
+            <label for="razaosocial">Logomarca <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="Utilizado nos orçamentos e certificados"></i></label>
+            <input type="file" class="form-control" name="logo[]" id="logo" accept="image/*">
+            {% if data.credenciado_logo != '' %}
+            <br><img src="{{ root }}/files/images/logos/{{ data.credenciado_logo }}" width="100"><br><br>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h4>Contato</h4><hr>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="telefone">Telefone * <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="Telefone de contato"></i></label>
+            <input type="text" class="form-control" name="telefone" id="telefone" value="{{ data.credenciado_telefone }}" placeholder="(00) 0000-0000" minlength="14" maxlength="15">
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="email">E-mail * <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="E-mail de contato"></i></label>
+            <input type="email" class="form-control" name="email" id="email" value="{{ data.credenciado_email }}">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h4>Endereço</h4><hr>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="endereco">Logradouro * <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="Rua, Avenida"></i></label>
+            <input type="text" class="form-control" name="endereco" id="endereco" value="{{ data.credenciado_endereco }}">
+        </div>
+        <div class="form-group">
+            <label for="bairro">Bairro *</label>
+            <input type="text" class="form-control" name="bairro" id="bairro" value="{{ data.credenciado_bairro }}">
+        </div>
+        <div class="form-group">
+            <label for="numero">Número *</label>
+            <input type="text" class="form-control numbers" name="numero" id="numero" value="{{ data.credenciado_numero }}">
+        </div>
+        <div class="form-group">
+            <label for="complemento">Complemento <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="Exemplo: Apto 21, 2º Andar"></i></label>
+            <input type="text" class="form-control" name="complemento" id="complemento" value="{{ data.credenciado_complemento }}">
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="pais">País *</label>
+            <select class="form-control" name="pais" id="pais">
+               {% include 'options_paises.html' %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="estado">Estado *</label>
+            <select class="form-control" name="estado" id="estado">
+                {% include 'options_estados.html' %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="cidade">Cidade *</label>
+            <select class="form-control" name="cidade" id="cidade">
+                {% include 'options_cidades.html' %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="cep">CEP *</label>
+            <input type="text" class="form-control numbers" name="cep" id="cep" value="{{ data.credenciado_cep }}" placeholder="00000-000" maxlength="9" minlength="9">
+        </div>
+    </div>
+</div>
+

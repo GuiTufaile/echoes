@@ -1,0 +1,60 @@
+{% extends "page.html" %}
+
+{% block page_content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="breadcrumb">
+                    <li><a href="{{ root }}">Home</a></li>
+                    {% if usertype == 'administrador'%}
+                    <li><a href="{{ root }}/credenciados/">Credenciado ({{ data.credenciado }})</a></li>
+                    {% endif %}
+                    <li><a href="{{ root }}/clientes">Clientes</a></li>
+                    <li class="active">Certificados</li>
+                </ol>
+            </div> 
+        </div>
+        <div class="row">
+            <div class="col-md-6"><h3>LISTAGEM DE CERTIFICADOS</h3></div>
+            <div class="col-md-6">
+                <h3 class="pull-right">Certificados Gerados: {{ data.total }}</h3>
+            </div>                                              
+        </div>
+        <div class="row">        
+            <div class="col-md-12"><hr></div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+               <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th> Nº </th>
+                            <th> Cliente </th>
+                            <th> Validade </th>
+                            <th> Ações </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for orcamento in data.orcamentos %}
+                        <tr>
+                            <td> {{ orcamento.orcamento_id }} </td>
+                            <td> {{ orcamento.cliente_nomefantasia }} </td>         
+                            <td> {{ orcamento.certificado_validade }} </td>
+                            <td>
+                                <a href="{{ root }}/orcamentos/editar.php?id={{ orcamento.id }}" class="btn btn-xs btn-info"> <i class="fa fa-cog"></i> Gerar PDF </a>
+                                {% if usertype == 'credenciado' or usertype == 'responsavel' %}
+                                    {% if orcamento.evento_status == 5 %}
+                                    <a href="{{ root }}/orcamentos/?id={{ orcamento.id }}" class="btn btn-xs btn-default"> <i class="fa fa-paper-plane"></i> Enviar Certificado </a>
+                                    {% endif %}    
+                                {% endif %}                        
+                            </td>
+                        </tr>
+                        {% endfor %}   
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

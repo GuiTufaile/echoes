@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>  
+        <meta charset="utf-8">
+        <title>Echoes | {{ title }}</title>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link rel="shortcut icon" href="{{ resources }}/img/favicon.png"  type="image/x-icon"/>
+
+        <!-- Stylesheet -->  
+        <link rel="stylesheet" type="text/css" href="{{ resources }}/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="{{ resources }}/css/bootstrap-theme.css">
+        <link rel="stylesheet" type="text/css" href="{{ resources }}/css/font-awesome.min.css"/>
+        <link rel="stylesheet" type="text/css" href="{{ resources }}/css/style.css"/>
+
+        <!-- Configurações Javascript -->  
+        <script>
+            var ROOT_PATH = "{{ root }}";
+            var RESOURCES_PATH = "{{ resources }}";
+        </script>
+        
+        {% block additional_stysheets %}{% endblock %}
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        {% block before_head_close %}{% endblock %}
+
+    </head>
+    <body>
+        
+        {% block header %}
+             {% include 'header.html' %}
+        {% endblock %}
+       
+        <section id="content">
+            {% block page_content %}{% endblock %}   
+        </section>
+
+        {% block modal_content %}{% endblock %}
+        
+        <!-- Scripts --> 
+        <script src="{{ resources }}/js/jquery.min.js"></script>
+        <script src="{{ resources }}/js/bootstrap.min.js"></script>  
+        <script src="{{ resources }}/js/jquery.mask.min.js"></script>
+        <script src="{{ resources }}/js/jquery.maskmoney.js"></script> 
+        <script src="{{ resources }}/js/jquery.validate.js"></script>
+        <script src="{{ resources }}/js/jquery.dataTables.js"></script>
+        <script src="{{ resources }}/js/bootstrap.datatables.js"></script>
+        <script src="{{ resources }}/js/scripts.js"></script>
+        
+        {% block footer %}
+             {% include 'footer.html' %}
+        {% endblock %}
+
+        {% block additional_scripts %}{% endblock %}
+
+    </body>
+</html>

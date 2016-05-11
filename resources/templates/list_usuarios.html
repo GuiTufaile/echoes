@@ -1,0 +1,75 @@
+{% extends "page.html" %}
+
+{% block page_content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="breadcrumb">
+                    <li><a href="{{ root }}">Home</a></li>
+                    <li class="active">Usuários</li>
+                </ol>
+            </div> 
+        </div>
+        <div class="row">  
+            <div class="col-md-12"> {% include 'alerts.html' with {'subject': 'Usuários'} %} </div> 
+        </div>
+        <div class="row">   
+            <div class="col-md-12"><a href="{{ root }}/usuarios/cadastro.php" class="btn btn-info pull-right"> <i class="fa fa-plus"></i> Novo </a></div>   
+        </div>
+        <div class="row">
+            <div class="col-md-6"><h3>LISTAGEM DE USUÁRIOS</h3></div>
+            <div class="col-md-6">
+                <h3 class="pull-right">Usuários Cadastrados: {{ data.total }}</h3>
+            </div>                                         
+        </div>
+        <div class="row">        
+            <div class="col-md-12"><hr></div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+               <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th> Nome </th>
+                            <th> Email </th>
+                            <th> Ações </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for usuario in data.usuarios %}
+                        <tr>
+                            <td> {{ usuario.usuario_nome }} </td>
+                            <td> {{ usuario.usuario_email }} </td>
+                            <td> {{ usuario.usuario_telefone }} </td>
+                            <td>
+                                <a href="{{ root }}/usuarios/senha.php?id={{ usuario.usuario_id }}" class="btn btn-xs btn-warning"> <i class="fa fa-refresh"></i> Resetar Senha </a>
+                                <a href="{{ root }}/usuarios/acoes/deletar.php?id={{ usuario.usuario_id }}" class="btn btn-xs btn-danger deletar"> <i class="fa fa-times"></i> Remover </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+{% block additional_scripts %}
+
+    <script>
+        $(document).ready(function(){
+            $(".deletar").on('click', function () {
+                r = confirm("Deseja realmente deletar este usuário?");
+                if(r == true){
+                    return true;
+                } else{
+                    return false;
+                }
+            });
+        });
+    </script>
+
+{% endblock %}

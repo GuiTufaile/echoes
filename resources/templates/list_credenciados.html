@@ -1,0 +1,96 @@
+{% extends "page.html" %}
+
+{% block page_content %}
+
+<div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="breadcrumb">
+                    <li><a href="{{ root }}">Home</a></li>
+                    <li class="active">Credênciados</li>
+                </ol>
+            </div> 
+        </div>
+        <div class="row">  
+            <div class="col-md-12"> {% include 'alerts.html' with {'subject': 'Credênciado'} %} </div> 
+        </div>
+        <div class="row">   
+            <div class="col-md-12"><a href="{{ root }}/credenciados/cadastro.php" class="btn btn-info pull-right"> <i class="fa fa-plus"></i> Novo </a></div>   
+        </div>       
+        <div class="row">
+            <div class="col-md-6"><h3> LISTAGEM DE CREDÊNCIADOS </h3></div>
+            <div class="col-md-6">
+                <h3 class="pull-right"> Credênciados Cadastrados: {{ data.total }} </h3>
+            </div>                                              
+        </div>
+        <div class="row">        
+            <div class="col-md-12"><hr></div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+               <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th> Nome Fantasia </th>
+                            <th> Razão Social </th>
+                            <th> CPNJ </th>
+                            <th> Telefone </th>
+                            <th> E-mail </th>
+                            <th> Cidade </th>
+                            <th> Estado </th>
+                            <th> Clientes </th>
+                            <th> Ações </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for credenciado in data.credenciados %}
+                        <tr>
+                            <td> {{ credenciado.credenciado_nomefantasia }} </td>
+                            <td> {{ credenciado.credenciado_razaosocial }} </td>
+                            <td> {{ credenciado.credenciado_cnpj }} </td>
+                            <td> {{ credenciado.credenciado_telefone }} </td>
+                            <td> {{ credenciado.credenciado_email }} </td>
+                            <td> {{ credenciado.cidade_nome }} </td>
+                            <td> {{ credenciado.estado_nome }} </td>
+                            <td> {{ credenciado.credenciado_qtdcliente }} </td>
+                            <td>
+                                <div class="btn-group">
+                                    <a href="{{ root }}/credenciados/editar.php?id={{ credenciado.credenciado_id }}" class="btn btn-xs btn-info"> <i class="fa fa-cog"></i> Gerenciar </a>
+                                    <button type="button" class="btn btn-xs btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ root }}/clientes/index.php?id={{ credenciado.credenciado_id }}">Clientes</a></li>
+                                        <li><a href="{{ root }}/orcamentos/index.php?id={{ credenciado.credenciado_id }}&credenciado">Orçamentos</a></li>
+                                        <li><a href="{{ root }}/responsaveis/index.php?id={{ credenciado.credenciado_id }}">Responsáveis</a></li>
+                                    </ul>
+                                </div>
+                                <a href="{{ root }}/credenciados/acoes/deletar.php?id={{ credenciado.credenciado_id }}" class="btn btn-xs btn-danger deletar"> <i class="fa fa-times"></i> Remover </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block additional_scripts %}
+
+    <script>
+        $(document).ready(function(){
+            $(".deletar").on('click', function () {
+                r = confirm("Deseja realmente deletar este credênciado?");
+                if(r == true){
+                    return true;
+                } else{
+                    return false;
+                }
+            });
+        });
+    </script>
+
+{% endblock %}
+

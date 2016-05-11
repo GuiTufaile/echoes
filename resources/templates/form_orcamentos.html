@@ -1,0 +1,81 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="cliente">Cliente *</label>
+            <select class="form-control" name="cliente" id="cliente">
+                <option value=""></option>
+                {% for cliente in data.clientes %}
+                <option value="{{ cliente.cliente_id }}" {% if data.cliente_id == cliente.cliente_id %}selected="selected"{% endif %}>{{ cliente.cliente_razaosocial }} - {{ cliente.cliente_nomefantasia }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="responsavel">Responsável *</label>
+            <select class="form-control" name="responsavel" id="responsavel">
+                <option value=""></option>
+                {% for responsavel in data.responsaveis %}
+                <option value="{{ responsavel.responsavel_id }}" {% if data.responsavel_id == responsavel.responsavel_id %}selected="selected"{% endif %}>{{ responsavel.responsavel_nome }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="estado">Estado do Carpete *</label>
+            <select class="form-control" name="estado" id="estado">
+              <option value="1" {% if data.orcamento_estado == "1" %}selected="selected"{% endif %}>Muito Sujo</option>
+              <option value="2" {% if data.orcamento_estado == "2" %}selected="selected"{% endif %}>Sujo</option>
+              <option value="3" {% if data.orcamento_estado == "3" %}selected="selected"{% endif %}>Mediano</option>
+            </select>
+        </div>   
+        <div class="form-group">
+            <label for="area">Área (m²) * <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="Utilizar apenas némeros"></i></label>
+            <input type="text" class="form-control numbers" name="area" id="area" value={{ data.orcamento_area }}>
+        </div>
+        <div class="form-group">
+            <label for="valor">Valor (m²) *</label>
+            <div class="input-group">
+                <span class="input-group-addon">R$</span>
+                <input type="text" class="form-control" name="valor" id="valor" value="{{ data.orcamento_valor }}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="tipodesconto">Tipo de Desconto</label>
+            <select class="form-control" name="tipodesconto" id="tipodesconto">
+              <option value="" {% if data.orcamento_tipodesconto == "" %}selected="selected"{% endif %}></option>
+              <option value="1" {% if data.orcamento_tipodesconto == "1" %}selected="selected"{% endif %}>Porcentagem %</option>
+              <option value="2" {% if data.orcamento_tipodesconto == "2" %}selected="selected"{% endif %}>Valor R$</option>
+            </select>
+        </div>                 
+        <div class="form-group">
+            <label for="desconto">Desconto <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="Utilize apenas números"></i></label>
+            <input type="text" class="form-control numbers" name="desconto" id="desconto" value="{{ data.orcamento_desconto }}">
+        </div>
+        <div class="form-group">
+            <label for="pagamento">Pagamento *</label>
+            <select name="pagamento" class="form-control">
+                <option value="1" {% if data.orcamento_pagamento == "1" %}selected="selected"{% endif %}>À Vista</option>
+                <option value="2" {% if data.orcamento_pagamento == "2" %}selected="selected"{% endif %}>A Prazo</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="formapagamento">Forma de Pagamento <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="30/60 dias, Boleto"></i></label>
+            <input type="text" class="form-control" name="formapagamento" id="formapagamento" value="{{ data.orcamento_formapagamento }}">
+        </div>
+        <div class="form-group">
+            <label for="validade">Validade * <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="Validade em dias"></i></label>
+            <input type="text" class="form-control numbers" name="validade" id="validade" value="{{ data.orcamento_validade }}">
+        </div>
+        <div class="form-group">
+            <label for="observacoes">Observações <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="Esta observação estará presente no corpo do orçamento"></i></label>
+            <textarea name="observacoes" id="observacoes" class="form-control" rows="4" value="{{ data.orcamento_observacoes }}"></textarea>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label>Resumo</label>
+        </div>
+        <div id="clientedados"></div>
+        <div id="total" class="well">
+            <strong>Total:</strong> R$ <span class="valor">0,00</span> 
+        </div>
+    </div>
+</div>

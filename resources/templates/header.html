@@ -1,0 +1,83 @@
+<div class="container" >
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only"> Toggle navigation </span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ root }}/dashboard/index.php">
+                    <img src="{{ resources }}/img/logo.png" class="logo" alt="Logomarca Echoes Conteúdo Web" />
+                </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    {% if usertype == 'administrador' or usertype == 'credenciado' or usertype == 'responsavel' %}
+                    <li>
+                        <a href="{{ root }}/dashboard/index.php">  Dashboard </a>
+                    </li>
+                    {% endif %}
+                    {% if usertype == 'administrador'%}
+                    <li>
+                        <a href="{{ root }}/credenciados/index.php"> Credênciados </a>
+                    </li>
+                    {% endif %}
+                    {%  if usertype == 'credenciado' or usertype == 'responsavel' %}
+                    <li>
+                        <a href="{{ root }}/clientes/index.php"> Clientes </a>
+                    </li>
+                    {% endif %}
+                    {% if usertype == 'administrador' %}
+                    <li>
+                        <a href="{{ root }}/usuarios/index.php"> Usuários </a>
+                    </li>
+                    {% endif %}
+                    {% if usertype == 'credenciado' or usertype == 'responsavel' or usertype == 'cliente'%}
+                    <li>
+                        <a href="{{ root }}/orcamentos/index.php?credenciado"> Orçamentos </a>
+                    </li>
+                    <li>
+                        <a href="{{ root }}/certificados/index.php"> Certificados </a>
+                    </li>
+                    {% endif %}
+                    {% if usertype == 'credenciado'%}
+                    <li>
+                        <a href="{{ root }}/responsaveis/index.php"> Responsáveis </a>
+                    </li>
+                    {% endif %}
+                    {% if usertype == 'administrador' or usertype == 'credenciado'%}
+                    <li>
+                        <a href="{{ root }}/mediakit/index.php"> Media Kit </a>
+                    </li>
+                    {% endif %}
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            {{ username }}
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{{ root }}/configuracoes/perfil/index.php"> Alterar Perfil </a>
+                            </li>
+                            {%  if usertype == 'credenciado' %}
+                            <li>
+                                <a href="{{ root }}/configuracoes/dados/index.php"> Alterar Dados Credenciado</a>
+                            </li>
+                            {% endif %}
+                            <li>
+                                <a href="{{ root }}/ajuda/index.php"> Ajuda </a>
+                            </li>
+                            <li>
+                                <a href="{{ root }}/logout.php"> Sair </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>

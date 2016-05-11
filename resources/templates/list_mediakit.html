@@ -1,0 +1,79 @@
+{% extends "page.html" %}
+
+{% block page_content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="breadcrumb">
+                    <li><a href="{{ root }}">Home</a></li>
+                    <li class="active">Media Kit</li>
+                </ol>
+            </div> 
+        </div>
+        <div class="row">  
+            <div class="col-md-12"> {% include 'alerts.html' with {'subject': 'MediaKit'} %} </div> 
+        </div>
+        <div class="row">   
+            <div class="col-md-12"><a href="{{ root }}/mediakit/cadastro.php" class="btn btn-info pull-right"> <i class="fa fa-plus"></i> Novo </a></div>   
+        </div>
+        <div class="row">
+            <div class="col-md-6"><h3>LISTAGEM DE MEDIAKIT</h3></div>
+            <div class="col-md-6">
+                <h3 class="pull-right">MediaKit Cadastrados: {{ data.total }}</h3>
+            </div>                                         
+        </div>
+        <div class="row">        
+            <div class="col-md-12"><hr></div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+               <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th> Nome </th>
+                            <th> Tipo </th>
+                            <th> Data de Cadastro </th>
+                            <th> Ações </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for mediakit in data.mediakits %}
+                        <tr>
+                            <td> {{ mediakit.media_nome }} </td>
+                            <td> {{ mediakit.media_tipo }} </td>
+                            <td> {{ mediakit.media_timestamp|date("d/m/Y") }} </td>
+                            <td>
+                                <a href="{{ root }}/mediakit/visualizar.php?id={{ mediakit.media_id }}" class="btn btn-xs btn-success  {% if mediakit.visualizar != true %}disabled{% endif %}"> <i class="fa fa-desktop"></i> Visualizar </a>
+                                <a href="{{ root }}/mediakit/download.php?id={{ mediakit.media_id }}" class="btn btn-xs btn-info"> <i class="fa fa-download"></i> Download </a>
+                                {% if usertype == 'administrador' %}
+                                <a href="{{ root }}/mediakit/acoes/deletar.php?id={{ mediakit.media_id }}" class="btn btn-xs btn-danger deletar"> <i class="fa fa-times"></i> Remover </a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+{% block additional_scripts %}
+
+    <script>
+        $(document).ready(function(){
+            $(".deletar").on('click', function () {
+                r = confirm("Deseja realmente deletar este media kit?");
+                if(r == true){
+                    return true;
+                } else{
+                    return false;
+                }
+            });
+        });
+    </script>
+
+{% endblock %}
