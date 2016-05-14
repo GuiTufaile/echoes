@@ -15,7 +15,7 @@
 
     // Processa dados de template
     $cliente = [
-        "credenciado_id"       => "",
+    /*    "credenciado_id"       => "",
         "cliente_nomefantasia" => "",
         "cliente_razaosocial"  => "",
         "cliente_cnpj"         => "",
@@ -29,6 +29,7 @@
         "cliente_bairro"       => "",
         "cliente_numero"       => "",
         "cliente_complemento"  => ""
+    */
     ];
 
     // Valida dados do cliente

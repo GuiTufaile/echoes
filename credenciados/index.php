@@ -40,6 +40,7 @@
         $registro["credenciado_qtdcliente"] = $clientes["quantidade"];
         $data['credenciados'][] = $registro;
     }
+    
 
     // Renderiza template
     echo $twig->render('list_credenciados.html', [

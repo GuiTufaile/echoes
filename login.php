@@ -14,6 +14,8 @@
 						inner JOIN contatos c ON c.idContato = e.Contatos_idContato 
 						inner JOIN pessoas p on c.Pessoas_idPessoa = p.idPessoa 
 						WHERE e.EmailPrincipal = 1 
+						AND p.PessoaStatus = 1
+						AND c.ContatoPermissaologin = 1 /*Remover após 2 fase*/
 						AND e.EmailEndereco = '".$email."'");
 		if($db->consulta_registros() == 1){
 	    	$registro = mysqli_fetch_array($db->dados);
@@ -22,22 +24,24 @@
 					session_start();
 					$_SESSION['usuarioId']          = $registro["idContato"];
 					$_SESSION['usuarioNome']        = $registro["ContatoNome"];
-					$_SESSION['usuarioEmpresa']     = $registro["PessoaNome"];
+					$_SESSION['usuarioEmpresa']     = $registro["PessoaFantasia"];
 					$_SESSION['usuarioEmail']       = $registro["EmailEndereco"];					
 					switch($registro["PessoaTipo"]){
 						case 1: $_SESSION['usuarioTipo'] = "administrador"; break;
-						case 2: $_SESSION['usuarioTipo'] = "parceiro"; break;
-						case 3: $_SESSION['usuarioTipo'] = "cliente"; break;
-					}
+						/* Habilitar na segunda etapa do projeto */
+						//case 2: $_SESSION['usuarioTipo'] = "parceiro"; break;
+						//case 3: $_SESSION['usuarioTipo'] = "cliente"; break;
+					}					
 					header("Location: ".ROOT_WEB."/dashboard/index.php");
 				}
 			} else {
 				header("Location: ".ROOT_WEB."/index.php?erro=login_senha_invalido");
 			}
 		} else{
-			header("Location: ".ROOT_WEB."/index.php?erro=login_senha_invalido");
+			header("Location: ".ROOT_WEB."/index.php?erro=login_inexistente");
 		}
 	} else{
 		header("Location: ".ROOT_WEB."/index.php?erro=campo_vazio");
 	}
+	
 ?>

@@ -3,7 +3,7 @@
     // Includes e requires
     require_once "../config.php";
     require_once RESOURCE_PATH."/configs/privilege_administrador.php";
-    require_once RESOURCE_PATH."/configs/privilege_parceiro.php";
+    //require_once RESOURCE_PATH."/configs/privilege_parceiro.php";
     require RESOURCE_PATH."/php/verify_session.php";
     include RESOURCE_PATH."/php/verify_error.php";
     include RESOURCE_PATH."/php/classes/class.mysql.php"; 

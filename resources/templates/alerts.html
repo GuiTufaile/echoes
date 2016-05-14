@@ -10,7 +10,7 @@
 {% endif %}
 {% if alert.type == 'deletar' and alert.value == 'sucesso' %}
 <div class="alert alert-success" role="alert">
-    {{ subject }} deletad{{ gender|default('o') }} com sucesso!
+    {{ subject }} excluid{{ gender|default('o') }} com sucesso!
 </div>
 {% endif %}
 {% if alert.type == 'duvida' and alert.value == 'sucesso' %}
@@ -35,7 +35,7 @@
 {% endif %}
 {% if alert.type == 'deletar' and alert.value == 'erro' %}
 <div class="alert alert-danger" role="alert">
-    Erro ao deletar {{ subject }}, tente novamente
+    Erro ao excluir {{ subject }}, tente novamente
 </div>
 {% endif %}
 {% if alert.type == 'duvida' and alert.value == 'erro' %}

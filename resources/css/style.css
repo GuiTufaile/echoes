@@ -1,3 +1,4 @@
+/* GERAL */
 @font-face {
     font-family: 'stilulight';
     src: url('../fonts/stilu-light-webfont.eot');
@@ -46,15 +47,19 @@
 body, a, p, div, label, li {
 	font-family: 'stilu-regular-webfont', Arial, sans-serif !important; 
 }
-
-.dataTables_filter{
-    float: right;
-}
-
 .error {
 	color:red;
 }
 
+/* Tabelas */
+.dataTables_filter{
+    float: right;
+}
+.btn-info{
+	padding: 1px 13px;
+}
+
+/* LOGIN */
 .ctn_login{
     background-color: #01181e;
     width:100%;
@@ -62,6 +67,7 @@ body, a, p, div, label, li {
     color:#FFF;
     padding-bottom: 11%;
 }
+
 
 .logologin{
     max-width: 350px;

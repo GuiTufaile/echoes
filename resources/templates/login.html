@@ -18,6 +18,11 @@
                     Login ou senha inválidos.
                 </div>
                 {% endif %}
+                {% if error == 'login_inexistente' %}
+                <div class="alert alert-danger" role="alert">
+                    Usuário não cadastrado.
+                </div>
+                {% endif %}
                 {% if error == 'campo_vazio' %}
                 <div class="alert alert-danger" role="alert">
                     Campos vazios.

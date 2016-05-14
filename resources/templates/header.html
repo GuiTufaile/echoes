@@ -14,42 +14,47 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    {% if usertype == 'administrador' or usertype == 'credenciado' or usertype == 'responsavel' %}
+                    <!-- Menu do Site Institucional -->
+                    {% if usertype is null %}
+                    <li>
+                        <a href="{{ root }}/dashboard/index.php">  A Echoes </a>
+                    </li>
+                    {% endif %} 
+                    {% if usertype is null %}
+                    <li>
+                        <a href="{{ root }}/dashboard/index.php">  Soluções </a>
+                    </li>
+                    {% endif %}
+                    {% if usertype is null %}
+                    <li>
+                        <a href="{{ root }}/dashboard/index.php">  Contato </a>
+                    </li>
+                    {% endif %}
+                    
+                    <!-- Menu da Área Restrita -->
+                    {% if usertype == 'administrador' %}
                     <li>
                         <a href="{{ root }}/dashboard/index.php">  Dashboard </a>
                     </li>
                     {% endif %}
-                    {% if usertype == 'administrador'%}
-                    <li>
-                        <a href="{{ root }}/credenciados/index.php"> Credênciados </a>
-                    </li>
-                    {% endif %}
-                    {%  if usertype == 'credenciado' or usertype == 'responsavel' %}
+                    {%  if usertype == 'administrador' %}
                     <li>
                         <a href="{{ root }}/clientes/index.php"> Clientes </a>
                     </li>
                     {% endif %}
+                    {% if usertype == 'administrador'%}
+                    <li>
+                        <a href="{{ root }}/parceiros/index.php"> Parceiros </a>
+                    </li>
+                    {% endif %}
                     {% if usertype == 'administrador' %}
                     <li>
-                        <a href="{{ root }}/usuarios/index.php"> Usuários </a>
+                        <a href="{{ root }}/news/index.php"> Newsletter </a>
                     </li>
                     {% endif %}
-                    {% if usertype == 'credenciado' or usertype == 'responsavel' or usertype == 'cliente'%}
+                    {% if usertype == 'administrador' %}
                     <li>
-                        <a href="{{ root }}/orcamentos/index.php?credenciado"> Orçamentos </a>
-                    </li>
-                    <li>
-                        <a href="{{ root }}/certificados/index.php"> Certificados </a>
-                    </li>
-                    {% endif %}
-                    {% if usertype == 'credenciado'%}
-                    <li>
-                        <a href="{{ root }}/responsaveis/index.php"> Responsáveis </a>
-                    </li>
-                    {% endif %}
-                    {% if usertype == 'administrador' or usertype == 'credenciado'%}
-                    <li>
-                        <a href="{{ root }}/mediakit/index.php"> Media Kit </a>
+                        <a href="{{ root }}/interessados/index.php"> Interessados </a>
                     </li>
                     {% endif %}
                 </ul>
@@ -62,14 +67,6 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="{{ root }}/configuracoes/perfil/index.php"> Alterar Perfil </a>
-                            </li>
-                            {%  if usertype == 'credenciado' %}
-                            <li>
-                                <a href="{{ root }}/configuracoes/dados/index.php"> Alterar Dados Credenciado</a>
-                            </li>
-                            {% endif %}
-                            <li>
-                                <a href="{{ root }}/ajuda/index.php"> Ajuda </a>
                             </li>
                             <li>
                                 <a href="{{ root }}/logout.php"> Sair </a>
