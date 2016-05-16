@@ -15,22 +15,45 @@
 
     // Processa dados de template
     $cliente = [
-    /*    "credenciado_id"       => "",
-        "cliente_nomefantasia" => "",
-        "cliente_razaosocial"  => "",
-        "cliente_cnpj"         => "",
-        "cliente_telefone"     => "",
-        "cliente_email"        => "",
-        "cliente_cep"          => "",
-        "pais_id"              => "",
-        "estado_id"            => "",
-        "cidade_id"            => "",
-        "cliente_endereco"     => "",
-        "cliente_bairro"       => "",
-        "cliente_numero"       => "",
-        "cliente_complemento"  => ""
-    */
-    ];
+    "idPessoa"              => "",
+    "PessoaTipo"            => "",
+    "PessoaRazao"           => "",
+    "PessoaFantasia"        => "",
+    "PessoaBairro"          => "",
+    "PessoaLogradouro"      => "",
+    "PessoaNumero"          => "",
+    "PessoaComplemento"     => "",
+    "PessoaCNPJ"            => "",
+    "Cidades_idCidade"      => "",
+    "PessoaCPF"             => "",
+    "PessoaLogo"            => "",
+    "PessoaDatacadastro"    => "",
+    "PessoaStatus"          => "",
+    "PessoaCasestatus"      => "",
+    "PessoaCaseNome"        => "",
+    "PessoaCase"            => "",
+    "idContato"             => "",
+    "Pessoas_idPessoa"      => "",
+    "ContatoNome"           => "",
+    "ContatoObs"            => "",
+    "ContatoPrincipal"      => "",
+    "Cargos_idCargo"        => "",
+    "Setores_idSetor"       => "",
+    "ContatoPermissaologin" => "",
+    "idCargo"               => "",
+    "CargoNome"             => "",
+    "idSetor"               => "",
+    "SetorNome"             => "",
+    "idCidade"              => "",
+    "CidadeNome"            => "",
+    "idEstado"              => "",
+    "EstadoNome"            => "",
+    "EstadoSigla"           => "",
+    "Paises_idPais"         => "",
+    "idPais"                => "",
+    "PaisNome"              => "",
+    "PaisLang"              => ""
+];
 
     // Valida dados do cliente
     if(isset($_POST['nomefantasia']) AND $_POST['nomefantasia'] != ""){

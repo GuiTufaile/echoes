@@ -29,7 +29,6 @@
         <div class="row">
             <div class="col-md-12">
                <table class="table table-striped">
-               <!--Nome Fantasia, Razão Social, CNPJ / CPF, Cidade e a coluna de opções.-->
                     <thead>
                         <tr>
                             <th> Nome Fantasia </th>                           
@@ -74,18 +73,18 @@
 
 {% block additional_scripts %}
 
-    <script>
-        $(document).ready(function(){
-            $(".deletar").on('click', function () {
-                r = confirm("Deseja realmente excluir este cliente?");
-                if(r == true){
-                    return true;
-                } else{
-                    return false;
-                }
-            });
+<script>
+    $(document).ready(function(){
+        $(".deletar").on('click', function () {
+            r = confirm("Deseja realmente excluir este cliente?");
+            if(r == true){
+                return true;
+            } else{
+                return false;
+            }
         });
-    </script>
+    });
+</script>
 
 {% endblock %}
 

@@ -25,8 +25,10 @@
     // Processa dados de template
     $data = [];
 
-	$db->consulta_bd("SELECT * FROM view_pessoa                       
-                      ORDER BY PessoaFantasia DESC");
+	$db->consulta_bd("SELECT * FROM
+                    view_pessoa                       
+                    WHERE PessoaTipo = 3
+                    ORDER BY PessoaFantasia DESC");
 
 	$data['total'] = $db->consulta_registros();
 

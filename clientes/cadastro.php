@@ -17,67 +17,74 @@
 
     // Verifica ação de retorno
     $return = verifyReturn("clientes",(isset($_REQUEST["return"]))?$_REQUEST["return"]:"");
-/*
 
--idPessoa
-PessoaTipo
-PessoaRazao
-PessoaFantasia
-PessoaBairro
-PessoaLogradouro
-PessoaNumero
-PessoaComplemento
-Cidades_idCidade
-PessoaCNPJ
-PessoaCPF
-PessoaLogo
-PessoaDatacadastro
-PessoaStatus
-PessoaCasestatus
-PessoaCaseNome
-PessoaCase
--idContato
--Pessoas_idPessoa
-ContatoNome
-ContatoObs
-ContatoPrincipal
--Cargos_idCargo
--Setores_idSetor
-ContatoPermissaologin
--idCargo
-CargoNome
--idSetor
-SetorNome
--idCidade
-CidadeNome
-Estados_idEstado
--idEstado
-EstadoNome
-EstadoSigla
--Paises_idPais
--idPais
-PaisNome
-PaisLang
 
-*/
+    // Inicializa DB
+	$db = new classMySQL();
+	$db2 = new classMySQL();
+
+	$db->consulta_bd("SELECT * FROM Setores");
+
+    while($registro = mysqli_fetch_array($db->dados)){
+        $data['setores'][] = $registro;
+    }
+	
+	$db2->consulta_bd("SELECT * FROM Cargos");
+
+    while($registro = mysqli_fetch_array($db2->dados)){
+        $data['cargos'][] = $registro;
+    }
+    console_log($data['setores'][].' - '.$data['cargos'][]);
+
     // Processa dados de template
     $data = [
-    /*
-        "cliente_nomefantasia" => "",
-        "cliente_razaosocial"  => "",
-        "cliente_cnpj"         => "",
-        "cliente_telefone"     => "",
-        "cliente_email"        => "",
-        "cliente_cep"          => "",
-        "pais_id"              => "",
-        "estado_id"            => "",
-        "cidade_id"            => "",
-        "cliente_endereco"     => "",
-        "cliente_bairro"       => "",
-        "cliente_numero"       => "",
-        "cliente_complemento"  => ""
-       */
+    	"idPessoa" 				=> "",
+        "PessoaTipo" 			=> "",
+        "PessoaRazao"  			=> "",
+        "PessoaFantasia"       	=> "",
+        "PessoaBairro"     		=> "",
+        "PessoaLogradouro"      => "",
+        "PessoaNumero"          => "",
+        "PessoaComplemento"     => "",
+        "PessoaCNPJ"            => "",
+        "Cidades_idCidade"      => "",
+        "PessoaCPF"            	=> "",
+        "PessoaLogo"     		=> "",
+        "PessoaDatacadastro"    => "",
+        "PessoaStatus"       	=> "",
+        "PessoaCasestatus"  	=> "",
+        "PessoaCaseNome"       	=> "",
+        "PessoaCase"       		=> "",
+        "idContato"       		=> "",
+        "Pessoas_idPessoa"      => "",
+        "ContatoNome"       	=> "",
+        "ContatoObs"       		=> "",
+        "ContatoPrincipal"      => "",
+        "Cargos_idCargo"      	=> "",
+        "Setores_idSetor"      	=> "",
+        "ContatoPermissaologin" => "",
+        "idCargo"       		=> "",
+        "CargoNome"       		=> "",
+        "idSetor"       		=> "",
+        "SetorNome"       		=> "",
+        "idCidade"       		=> "",
+        "CidadeNome"       		=> "",
+        "idEstado"       		=> "",
+        "EstadoNome"       		=> "",
+        "EstadoSigla"       	=> "",
+        "Paises_idPais"       	=> "",
+        "idPais"       			=> "",
+        "PaisNome"       		=> "",
+        "PaisLang"       		=> ""        
     ];
+
+    /*
+
+        "idTelefone"       		=> "",
+        "Contatos_idContato"    => "",
+        "TelefoneTipo"       	=> "",
+        "TelefoneNumero"       	=> ""
+    */	    	
 
     // Renderiza template
     echo $twig->render('add_clientes.html', [

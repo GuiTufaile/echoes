@@ -2,17 +2,24 @@
     <div class="col-md-6">
         <div class="form-group">
             <label for="nomefantasia">Nome Fantasia *</label>
-            <input type="text" class="form-control" name="nomefantasia" id="nomefantasia" value="{{ data.cliente_nomefantasia }}">
+            <input type="text" class="form-control" name="nomefantasia" id="nomefantasia" value="{{ data.PessoaFantasia }}">
         </div>
         <div class="form-group">
             <label for="cnpj">CNPJ *</label>
-            <input type="text" class="form-control" name="cnpj" id="cnpj" value="{{ data.cliente_cnpj }}" placeholder="00.000.000/0000-00" maxlength="18" minlength="18">
+            <input type="text" class="form-control" name="cnpj" id="cnpj" value="{{ data.PessoaCNPJ }}" placeholder="00.000.000/0000-00" maxlength="18" minlength="18">
         </div>        
     </div>
     <div class="col-md-6">
        <div class="form-group">
             <label for="razaosocial">Razão Social *</label>
-            <input type="text" class="form-control" name="razaosocial" id="razaosocial" value="{{ data.cliente_razaosocial }}">
+            <input type="text" class="form-control" name="razaosocial" id="razaosocial" value="{{ data.PessoaRazao }}">
+        </div>
+        <div class="form-group">
+            <label for="logo">Logomarca <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="Utilizado no site"></i></label>
+            <input type="file" class="form-control" name="logo[]" id="logo" accept="image/*">
+            {% if data.PessoaLogo != '' %}
+            <br><img src="{{ root }}/files/images/logos/{{ data.PessoaLogo }}" width="100"><br><br>
+            {% endif %}
         </div>
     </div>
 </div>
@@ -26,7 +33,7 @@
 	    <div class="col-md-6">
 	        <div class="form-group">
 	            <label for="telefone">Telefone * <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="Telefone de contato"></i></label>
-	            <input type="text" class="form-control telefone" name="telefone" id="telefone" value="{{ data.cliente_telefone }}" placeholder="(00) 0000-0000" minlength="14" maxlength="15">
+	            <input type="text" class="form-control telefone" name="telefone" id="telefone" value="{{ data.TelefoneNumero }}" placeholder="(00) 0000-0000" minlength="14" maxlength="15">
 	        </div>
 	        
 	    </div>
@@ -46,12 +53,51 @@
 </div>
 <div class="row">
     <div class="col-md-6">
+    <div id="dinamic_email">
         <div class="form-group">
             <label for="email">E-mail * <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="E-mail de contato"></i></label>
-            <input type="email" class="form-control" name="email" id="email" value="{{ data.cliente_email }}">
+            <input type="email" class="form-control" name="email" id="email" value="{{ data.EmailEndereco }}">
         </div>
     </div>
     <div class="col-md-6">
+        
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h4>Responsável</h4><hr>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="contatonome">Nome * <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="Responsável pela empresa"></i></label>
+            <input type="text" class="form-control" name="contatonome" id="contatonome" value="{{ data.ContatoNome }}">
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="cargo">Cargo *</label>
+            <select class="form-control" name="cargo" id="cargo">
+                {% for setor in data.cargos %}  
+                    {% if loop.first %}
+                        <option value="data.idCargo" selected="selected">data.CargoNome </option>
+                    {% endif %}               
+                        <option value="data.idCargo" >data.CargoNome </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="setor">Setor *</label>
+            <select class="form-control" name="setor" id="setor">
+                {% for setor in data.setores %}
+                    {% if loop.first %}
+                        <option value="data.idSetor" selected="selected">data.SetorNome </option>
+                    {% endif %} 
+                        <option value="data.idSetor" >data.SetorNome </option>
+                {% endfor %}
+            </select>
+        </div>
     </div>
 </div>
 <div class="row">
@@ -103,4 +149,3 @@
         </div>
     </div>
 </div>
-

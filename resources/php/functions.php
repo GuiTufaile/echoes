@@ -16,8 +16,8 @@
 			return $default;
 	}
 
-//Retorna mensagem no console
-	function debug_console( $data ) {
+	//Retorna mensagem no console
+	function console_log( $data ) {
 	if ( is_array( $data ) )
 	$output = "<script>console.log( 'Debug Objects: " . implode( ',', $data) . "' );</script>";
 	else

@@ -58,9 +58,18 @@ body, a, p, div, label, li {
 .btn-info{
 	padding: 1px 13px;
 }
+#add_tel, #rmv_tel{
+	/*float: none;*/
+    display: table;
+	margin-bottom:0px !important;
+	vertical-align: bottom !important;
+
+}
 
 /* LOGIN */
 .ctn_login{
+	position: absolute;
+	margin-top: -85px;
     background-color: #01181e;
     width:100%;
     height: 100%;
@@ -68,44 +77,67 @@ body, a, p, div, label, li {
     padding-bottom: 11%;
 }
 
-
 .logologin{
     max-width: 350px;
     margin: 3% auto;
     display: table;
 }
-.logo{
-    max-width: 200px;
-    display: table;
-}
 
 /* Menu */
+.logo{
+    max-width: 150px;
+    display: table;
+    margin: -4px 20px 8px 20px;
+}
+.navbar-fixed-top .nav, .collapse{
+    background-color: #01181e !important;
+    height: 73px !important; 
+}
+.navbar-fixed-top {
+	width: 100% !important;
+    background-color: #01181e !important;
+   	height: 73px !important;
+}
+#menu a{
+	color: #FFFFFF !important;
+	background-color: #01181e !important;
+}
 #menu li {
-	position: relative;
 	list-style: none; 
 	font-style: none !important;
-	color: #3a5c84 !important;
 	float:left; 
-	margin:10px 0 -58px 20px;
-	padding: 20px 10px 25px 10px !important;
-	background-color: #FFF;	
+	padding: 10px !important;
+	background-color: #01181e;	
 	cursor: pointer;
-	border-bottom: solid 3px #FFF;
+	border-bottom: solid 3px #01181e;
 }
 #menu li:hover {
-	background-color: #FFF !important;
-	border-bottom: solid 3px #3a5c84 !important;
+	border-bottom: solid 3px #fed732;
 }
-.menuativo, .menuativo:hover, .menuativo:visited, .menuativo:active {
-	border-bottom: solid 3px #3a5c84 !important;
-	background-color: #F9F9F9 !important;
+#menu li:hover > a {
+	color: #fed732 !important;
 }
+.dropdown-menu{
+	height: 91px !important;
+	margin-top:2px!important;
+	background-color: #01181e !important;
+	border-radius: 0px !important;
+}
+.dropdown-menu li{
+	width: 100% !important;
+	color:#FFF;
+}
+.dropdown-menu li:hover{
+	color: #fed732 !important;
+	background-color: #01181e !important;
+	border-bottom: solid 3px #01181e;
+}
+/*Fim menu*/
 
-.sessao{
-	list-style-type:none;
-}
+
 
 #content{
+	padding-top: 85px;
     margin-bottom: 40px; 
 }
 

@@ -374,45 +374,6 @@ $(document).ready(function() {
 	$("#numero").mask("9999");
   	$("#valor").maskMoney({thousands:'', decimal:'.'});
 
-  	// Add Telefone Dinamicamente
-  	$(function (){
-  		var nomediv = $('#dinamic_tel');
-  		var max = 5; 
-  		var x = 1;
-  		var a = x+1;
-
-  		$(document).on('click', '#add_tel', function(){
-	  		if (x < max) {
-	  			$('<div class="row novotel">'+
-				    '<div class="col-md-6">'+
-				        '<div class="form-group">'+
-				            '<label for="telefone'+ x +'">Telefone '+ a +'</label>'+
-				            '<input type="text" class="form-control telefone" name="telefone[]" id="telefone'+ x +'" placeholder="(00) 0000-0000" minlength="14" maxlength="15">'+
-				        '</div>'+		        
-				    '</div>'+
-				    '<div class="col-md-3">'+
-				        '<div class="form-group">'+
-				            '<label for="tipo'+ x +'">Tipo</label>'+
-				            '<select class="form-control" name="tipo[]" id="tipo'+ x +'">'+
-				               '<option value="Comercial" selected="selected">Comercial</option>'+
-				               '<option value="Pessoal" >Pessoal</option>'+
-				            '</select>'+
-				        '</div>'+
-				    '</div>'+
-				    '<div class="col-md-3">'+
-				        '<div class="btn btn-xs btn-danger" id="rmv_tel"><i class="fa fa-times"></i></div>'+
-				    '</div>'+
-			    '</div>').appendTo(nomediv);
-		  		x ++;
-		  		return false;		  	
-		  	}
-  		});
-
-  		$(document).on('click', '#rmv_tel', function(){
-  			$(this).parents('.novotel').remove();
-  			x--;
-  			return false;
-  		});
-  	});  		
+  	  		
 
 });

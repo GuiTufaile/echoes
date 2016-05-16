@@ -20,7 +20,7 @@
     $twig = new Twig_Environment($loader, $twig_config);
 
     // Verifica ação de retorno
-    $return = verifyReturn("credenciados",(isset($_REQUEST["return"]))?$_REQUEST["return"]:"");
+    $return = verifyReturn("parceiros",(isset($_REQUEST["return"]))?$_REQUEST["return"]:"");
 
     // Processa dados de template
     $data = [];

@@ -23,6 +23,7 @@
 	        <div class="col-md-12">
 	            <form action="{{ root }}/clientes/acoes/cadastrar.php" method="post" enctype="multipart/form-data" id="formcliente" autocomplete="false">
                     {% include 'form_clientes.html' %}
+                    <p><tt id="results"></tt></p>
                     <div class="row">
                         <div class="col-md-12">
                             <input class="btn btn-info pull-right" type="submit" value="Cadastrar">
@@ -33,4 +34,61 @@
 	    </div>
 	</div>
 
+{% endblock %}
+
+
+{% block additional_scripts %}	
+<script>
+	$(document).ready(function(){
+		// Add Telefone Dinamicamente        
+	 	$(function (){
+	  		var nomediv = $('#dinamic_tel');
+	  		var max = 5; 
+	  		var x = 1;
+            
+	  		$(document).on('click', '#add_tel', function(){
+		  		if (x < max) {
+		  			x ++;
+		  			$('<div class="row novotel">'+
+					    '<div class="col-md-6">'+
+					        '<div class="form-group">'+
+					            '<label for="telefone'+ x +'">Telefone</label>'+
+					            '<input type="text" class="form-control telefone" name="telefone[]" id="telefone'+ x +'" placeholder="(00) 0000-0000" minlength="14" maxlength="15">'+
+					        '</div>'+		        
+					    '</div>'+
+					    '<div class="col-md-3">'+
+					        '<div class="form-group">'+
+					            '<label for="tipo'+ x +'">Tipo</label>'+
+					            '<select class="form-control" name="tipo[]" id="tipo'+ x +'">'+
+					               '<option value="Comercial" selected="selected">Comercial</option>'+
+					               '<option value="Pessoal" >Pessoal</option>'+
+					            '</select>'+
+					        '</div>'+
+					    '</div>'+
+					    '<div class="col-md-3">'+
+					        '<div class="btn btn-xs btn-danger" id="rmv_tel"><i class="fa fa-times"></i></div>'+
+					    '</div>'+
+				    '</div>').appendTo(nomediv);			  		
+			  		return false;		  	
+			  	}
+	  		});
+	  		//remove
+	  		$(document).on('click', '#rmv_tel', function(){
+	  			$(this).parents('.novotel').remove();
+	  			x--;
+	  			return false;
+	  		});
+	  	});
+
+/*
+	  	function showValues() {
+		    var str = $( "form" ).serialize();
+		    $( "#results" ).text( str );
+		  }
+		  $( "input[type='checkbox'], input[type='radio']" ).on( "click", showValues );
+		  $( "select" ).on( "change", showValues );
+		  showValues();
+*/		  
+	});
+</script>
 {% endblock %}
